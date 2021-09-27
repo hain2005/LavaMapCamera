@@ -10,6 +10,10 @@ import Foundation
 import Photos
 import UIKit
 
+public protocol CameraControllerDelegate: AnyObject {
+    func pictureTaken(url: URL)
+}
+
 public class CameraController: UIViewController {
 
     /// view to "flash" during photo capture
@@ -31,7 +35,8 @@ public class CameraController: UIViewController {
     private var maxPhotoProcessingTime: CMTime?
     private var selectedSemanticSegmentationMatteTypes = [AVSemanticSegmentationMatte.MatteType]()
     private var subfolderCaptureSession: String = ""
-    
+    weak var delegate : CameraControllerDelegate?
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         subfolderCaptureSession = Date().dateAndTimetoString()
@@ -244,6 +249,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         self.save(photoData) { result in
             switch result {
             case .success(let url):
+                self.delegate?.pictureTaken(url: url)
                 print("snapshot saved to \(url)")
             case .failure (let error):
                 self.showError(at: #function, in: #file, error: error)
@@ -255,8 +261,8 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
     }
     
     func save(_ data: Data, burstIndex: Int? = nil, completion: @escaping (Result<URL, Error>) -> Void) {
-                
-        StorageManager.shared.saveFile(from: data, folder: Date().description,subfolder: subfolderCaptureSession, fileName: "1", fileExtension: "jpeg") { result in
+        let fileName = Date().dateAndTimetoString()
+        StorageManager.shared.saveFile(from: data, folder: Date().description,subfolder: subfolderCaptureSession, fileName: fileName, fileExtension: "jpeg") { result in
             switch result {
             case .success(let url):
                 completion(.success(url))
