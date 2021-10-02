@@ -16,6 +16,7 @@ extension Color {
     static let appLabel = Color("appLabel")
     static let appBackgroundSecondary = Color("appBackgroundSecondary")
     static let appBackgroundTertiary = Color("appBackgroundTertiary")
+    static let appButtonBackground =  Color("appButtonBackground")
 }
 
 //MARK: String Extension Functions
@@ -23,6 +24,10 @@ extension String {
     /// Gets value from Localizable.strings
     var localized: String {
         return NSLocalizedString(self, comment: "")
+    }
+    /// Gets value from Paramatized ocalizable.strings
+    func localized(with arguments: CVarArg...) -> String{
+       return String(format: self.localized, arguments: arguments)
     }
 }
 
