@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mRO-sK-Gcc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,8 +11,8 @@
         <!--Camera Controller-->
         <scene sceneID="1Ln-fW-1Ph">
             <objects>
-                <viewController storyboardIdentifier="cameraVC" id="mRO-sK-Gcc" customClass="CameraController" customModule="camera" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yIE-00-ray" customClass="PreviewView" customModule="camera" customModuleProvider="target">
+                <viewController storyboardIdentifier="cameraVC" id="mRO-sK-Gcc" customClass="CameraController" customModule="ID3D_iOS_mid_level_SwiftUI_Test_03" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIE-00-ray" customClass="PreviewView" customModule="ID3D_iOS_mid_level_SwiftUI_Test_03" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -23,6 +22,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoL-wu-bQ3">
                                 <rect key="frame" x="167" y="762.5" width="80" height="79"/>
+                                <accessibility key="accessibilityConfiguration" identifier="buttonTakePicture"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6XV-Eg-MxB"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="WIe-9V-k5I"/>
